@@ -2,9 +2,9 @@ import React from 'react';
 import request from 'superagent';
 import Paper from 'material-ui/lib/paper';
 
-const baseUrl = 'http://api.openweathermap.org';
-const path = 'data/2.5/weather';
 const apiKey = 'f51233d6e43d44de92d140c73527c9bd';
+const baseUrl = 'http://api.openweathermap.org/data/2.5/weather';
+const baseParams = `units=imperial&APPID=${apiKey}`;
 
 const columnStyle = {
   width: '33%',
@@ -23,9 +23,9 @@ export default class WeatherDisplay extends React.Component {
   }
 
   componentDidMount() {
-    const url = `${baseUrl}/${path}?zip=${this.props.zip}&units=imperial&APPID=${apiKey}`;
+    const requestUrl = `${baseUrl}?${baseParams}&zip=${this.props.zip}`;
 
-    request.get(url).end((err, response) => {
+    request.get(requestUrl).end((err, response) => {
       if (!err && response.body.cod === 200) {
         this.setState({ loaded: true, data: response.body });
       } else {
