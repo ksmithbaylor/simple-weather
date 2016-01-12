@@ -10,6 +10,7 @@ export default class ZipCodeEntry extends React.Component {
   render() {
     return (
       <TextField
+        ref="textField"
         floatingLabelText="Enter a zip code"
         onEnterKeyDown={this.handleEnter}
       />
@@ -18,6 +19,6 @@ export default class ZipCodeEntry extends React.Component {
 
   handleEnter(event) {
     this.props.newZip(event.target.value);
-    event.target.value = '';
+    this.refs.textField.clearValue();
   }
 }
