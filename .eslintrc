@@ -1,0 +1,47 @@
+{
+  "extends": "airbnb",
+  "parser": "babel-eslint",
+  "rules": {
+    "comma-dangle": 0,
+    "no-use-before-define": 0,
+    "spaced-comment": 0,
+    "no-unused-vars": [2, {
+      "vars": "local",
+      "args": "after-used",
+      "argsIgnorePattern": "^_"
+    }],
+    "no-shadow": [2, {
+      "allow": ["_", "__", "___", "____", "_____"]
+    }],
+    "new-cap": 0,
+    "radix": 0,
+    "no-nested-ternary": 0,
+
+    "react/sort-comp": [1, {
+      "order": [
+        "displayName",
+        "mixins",
+        "statics",
+        "propTypes",
+        "contextTypes",
+        "childContextTypes",
+        "defaultProps",
+        "state",
+        "constructor",
+        "getDefaultProps",
+        "getInitialState",
+        "getChildContext",
+        "render",
+        "componentWillMount",
+        "componentDidMount",
+        "componentWillReceiveProps",
+        "shouldComponentUpdate",
+        "componentWillUpdate",
+        "componentDidUpdate",
+        "componentWillUnmount",
+        "everything-else"
+      ]
+    }]
+  },
+  "plugins": ["babel", "react"]
+}
