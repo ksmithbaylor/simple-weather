@@ -13,10 +13,14 @@ export default class App extends React.Component {
   }
 
   render() {
+    const displays = this.state.zips.map((zip, i) => (
+      <WeatherDisplay key={i} zip={zip} />
+    ));
+
     return (
       <div style={{ padding: '1em' }}>
         <ZipCodeEntry newZip={this.handleNewZip} />
-        {this.state.zips.map((z, i) => <WeatherDisplay key={i} zip={z} />)}
+        {displays}
       </div>
     );
   }
