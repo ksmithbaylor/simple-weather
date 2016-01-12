@@ -1,7 +1,7 @@
 import React from 'react';
 import TextField from 'material-ui/lib/text-field';
 
-export default class App extends React.Component {
+export default class ZipCodeEntry extends React.Component {
   constructor(props) {
     super(props);
     this.handleEnter = this.handleEnter.bind(this);
