@@ -1,6 +1,7 @@
 import React from 'react';
 
 import ZipCodeEntry from './ZipCodeEntry';
+import WeatherDisplay from './WeatherDisplay';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -15,7 +16,7 @@ export default class App extends React.Component {
     return (
       <div style={{ padding: '1em' }}>
         <ZipCodeEntry newZip={this.handleNewZip} />
-        {this.state.zips.map((z, i) => <p key={i}>{z}</p>)}
+        {this.state.zips.map((z, i) => <WeatherDisplay key={i} zip={z} />)}
       </div>
     );
   }
