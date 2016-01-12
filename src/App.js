@@ -15,7 +15,7 @@ export default class App extends React.Component {
   render() {
     const displays = this.state.zips.map((zip, i) => (
       <WeatherDisplay key={i} zip={zip} />
-    ));
+    )).reverse();
 
     return (
       <div style={{ padding: '1em' }}>
