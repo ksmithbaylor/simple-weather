@@ -17,7 +17,8 @@ export default class WeatherDisplay extends React.Component {
     super(props);
     this.state = {
       loaded: false,
-      data: null
+      data: null,
+      error: false
     };
   }
 
@@ -25,10 +26,11 @@ export default class WeatherDisplay extends React.Component {
     const url = `${baseUrl}/${path}?zip=${this.props.zip}&units=imperial&APPID=${apiKey}`;
 
     request.get(url).end((err, response) => {
-      this.setState({
-        loaded: true,
-        data: response.body
-      });
+      if (!err && response.body.cod === 200) {
+        this.setState({ loaded: true, data: response.body });
+      } else {
+        this.setState({ error: true });
+      }
     });
   }
 
@@ -48,7 +50,11 @@ export default class WeatherDisplay extends React.Component {
           <p>Wind Speed: {this.state.data.wind.speed}</p>
         </div>
       </div>
-    ) : <p>Loading...</p>;
+    ) : this.state.error ? (
+      <p>An error occurred for zip code {this.props.zip}.</p>
+    ) : (
+      <p>Loading...</p>
+    );
 
     console.log(this.state.data);
 
